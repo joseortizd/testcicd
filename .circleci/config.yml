@@ -19,3 +19,19 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
+
+  deploy:
+    docker:
+      - image: circleci/node:10.15.3
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-testcicd-{{ checksum ".circleci/install-and-activate-google-cloud-sdk.sh" }}
+      - run: npm i
+      - run: /bin/bash .circleci/install-and-activate-google-cloud-sdk.sh
+      - run: npm start
+      - save_cache:
+          key: v1-testcicd-{{ checksum ".circleci/install-and-activate-google-cloud-sdk.sh" }}
+          paths:
+            - ~/google-cloud-sdk
+            - ~/.m2

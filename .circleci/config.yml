@@ -29,7 +29,7 @@ jobs:
           key: v1-testcicd-{{ checksum ".circleci/install-and-activate-google-cloud-sdk.sh" }}
       - run: npm i
       - run: /bin/bash .circleci/install-and-activate-google-cloud-sdk.sh
-      - run: npm start
+      - run: gcloud app deploy
       - save_cache:
           key: v1-testcicd-{{ checksum ".circleci/install-and-activate-google-cloud-sdk.sh" }}
           paths:

@@ -2,7 +2,7 @@ steps:
 - name: 'gcr.io/cloud-builders/npm'
   args: ['install']
 - name: 'gcr.io/cloud-builders/npm'
-  args: ['run', 'test:unit']
+  args: ['run', 'test']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/testcicd-264222/gcb-docker-compose:latest', '.']
 - name: 'docker/compose:1.15.0'

@@ -1,4 +1,5 @@
 steps:
-- name: gcr.io/cloud-builders/npm
-  entrypoint: npm
-  args: ['install', 'deploy']
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'test']
